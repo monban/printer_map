@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-PrinterMap::Application.config.secret_key_base = 'be87f706661c42cde342ff3abd5b82a733b1fffe4b0d4ba95b5b065990c9df34b000044446fafbf2cd495552cd80b4baf8dda48864a330fa865a83f3fcb32904'
+PrinterMap::Application.config.secret_key_base = 'fc3ad893be23faa9aa4f6f50c84d7ed291dcead4926d13c2220ab448c2576d373d18e632d1b9b3c07a11508a9aaca338ef55eeb23c30b94387c701ca9cd3d3ff'

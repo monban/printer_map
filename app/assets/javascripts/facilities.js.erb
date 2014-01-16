@@ -1,0 +1,23 @@
+$(document).ready(function() {
+  $(".deployment").draggable({containment: '#map', stop: update_position});
+  place_deployments();
+});
+
+function place_deployments() {
+  $('.deployment').each(function(i, elm) {
+    $.getJSON($(elm).data('resource-uri'), function(data, status, xhr) {
+      $(elm).offset($.parseJSON(data.position));
+    });
+  });
+};
+
+function update_position(evt, ui)
+{
+  elm = $(ui.helper);
+  console.log(elm);
+  $.ajax({
+    type: 'PATCH',
+    url: elm.data('resource-uri'),
+    data: {deployment: {position: JSON.stringify(elm.offset())}}
+  });
+}

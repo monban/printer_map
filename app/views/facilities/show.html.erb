@@ -1,0 +1,5 @@
+<div id="map">
+  <% for deployment in @entity.deployments %>
+    <div class="deployment" data-resource-uri="<%= deployment_path(deployment) %>"></div>
+  <% end %>
+</div>
