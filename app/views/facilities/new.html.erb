@@ -1,0 +1,12 @@
+<p><%= @entity.errors.messages %></p>
+<h2>Create a new faciity</h2>
+<%= form_for(@entity) do |f| %>
+	<p><%= f.label :name %>
+	<%= f.text_field :name %></p>
+	
+	<p><%= label_tag :picture %>
+	<%= f.file_field :picture %></p>
+	
+	<p><%= f.submit %>
+	
+<% end %>
