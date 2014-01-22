@@ -1,5 +1,5 @@
 <div id="map" style="background-image: url('/maps/<%= @entity.id %>.jpg')">
   <% for deployment in @entity.deployments %>
-    <div class="deployment" data-resource-uri="<%= deployment_path(deployment) %>"></div>
+    <div class="deployment" id="deployment_<%= deployment.id %>" data-resource-uri="<%= deployment_path(deployment) %>"></div>
   <% end %>
 </div>

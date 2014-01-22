@@ -6,18 +6,27 @@ $(document).ready(function() {
 function place_deployments() {
   $('.deployment').each(function(i, elm) {
     $.getJSON($(elm).data('resource-uri'), function(data, status, xhr) {
-      $(elm).offset($.parseJSON(data.position));
+      var position = $.parseJSON(data.position);
+      position.left = (position.left / 1000) * $("#map").innerWidth();
+      position.top = (position.top / 1000) * $("#map").innerHeight();
+      $(elm).css("left", position.left);
+      $(elm).css("top", position.top);
     });
   });
 };
 
 function update_position(evt, ui)
 {
+  var parent_width = $("#map").innerWidth();
+  var parent_height = $("#map").innerHeight();
   elm = $(ui.helper);
-  console.log(elm);
+  var pos_x = (elm.position().left / parent_width) * 1000;
+  var pos_y = (elm.position().top / parent_height) * 1000;
+  var position = {left: pos_x, top: pos_y};
+  console.log(position);
   $.ajax({
     type: 'PATCH',
     url: elm.data('resource-uri'),
-    data: {deployment: {position: JSON.stringify(elm.offset())}}
+    data: {deployment: {position: JSON.stringify(position)}}
   });
 }
